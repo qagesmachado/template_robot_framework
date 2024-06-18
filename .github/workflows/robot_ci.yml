@@ -2,7 +2,7 @@
 name: GitHub Actions - CI Robot Framework
 
 # Nome para a execução
-run-name: Running - Web testing
+run-name: Running - Web testing - ${{ github.event_name }}
 on: 
   push:
     branches:
