@@ -1,0 +1,4 @@
+robotframework==7.0.1
+robotframework-browser==18.2.0
+robotframework-requests==0.9.4
+robotframework-seleniumlibrary==6.2.0
