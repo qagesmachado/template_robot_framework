@@ -2,7 +2,7 @@
 name: GitHub Actions - CI Robot Framework
 
 # Nome para a execução
-run-name: ${{ github.actor }} esta executando a pipeline
+run-name: Running - Web testing
 on: 
   push:
     branches:
