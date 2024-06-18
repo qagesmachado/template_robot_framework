@@ -10,9 +10,10 @@ on:
   workflow_dispatch:
 # Conjunto de steps
 jobs:
-  test-page-object-web-testing:
+  on-push-test-page-object-web-testing:
   # máquina que será gerada
     runs-on: ubuntu-20.04
+    permissions: write-all
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -39,7 +40,7 @@ jobs:
         run: |
           robot -d ./results -v HEADLESS:true -v BROWSER:chromium tests/teste_com_page_object.robot
       
-      - name: Test results
+      - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
@@ -47,3 +48,16 @@ jobs:
           path: ./results
           if-no-files-found: ignore
           retention-days: 2
+
+      - name: Download test results
+        if: always()
+        uses: actions/download-artifact@v1
+        with:
+          name: results-chromium
+
+      - name: Send report
+        if: always()
+        uses: joonvena/robotframework-reporter-action@v2.4
+        with:
+          report_path: results-chromium
+          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
