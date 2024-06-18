@@ -19,16 +19,22 @@ jobs:
       
       - name: Install Python 3.10
         uses: actions/setup-python@v4
-          with: python-version: '3.10'
+        with:
+          python-version: '3.10'
       
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - name: Install Node.js 19.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: '19.1'
+
+      - name: Install Requirements
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+            python -m pip install --upgrade pip
+            pip install -U -r requirements.txt
+            sudo npm install @playwright/test
+            sudo npx playwright install-deps
+            rfbrowser init
+
+      - name: Running teses
+        run: |
+          robot -d ./results -v HEADLESS:true -v BROWSER:chromium /tests/teste_com_page_object.robot
