@@ -1,5 +1,8 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# Nome do Workflow
+name: GitHub Actions - CI Robot Framework
+
+# Nome para a execução
+run-name: ${{ github.actor }} esta executando a pipeline
 on: [push]
 jobs:
   Explore-GitHub-Actions:
