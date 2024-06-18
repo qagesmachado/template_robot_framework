@@ -37,7 +37,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, firefox]
+        browser: [chromium, firefox, webkit]
         tags: [CT1, CT2]
     steps:
       - name: checkout
