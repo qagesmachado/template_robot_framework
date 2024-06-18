@@ -81,13 +81,13 @@ jobs:
         with:
           name: results-${{matrix.browser}}
 
-      - name: Send report
-        if: always()
-        uses: joonvena/robotframework-reporter-action@v2.4
-        with:
-          report_path: results-${{matrix.browser}}
-          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-          show_passed_tests: false
+      # - name: Send report
+      #   if: always()
+      #   uses: joonvena/robotframework-reporter-action@v2.4
+      #   with:
+      #     report_path: results-${{matrix.browser}}
+      #     gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+      #     show_passed_tests: false
 
   on-dispatch-test-page-object-web-testing:
     if: ${{ github.event_name == 'workflow_dispatch' }}
@@ -135,12 +135,12 @@ jobs:
         with:
           name: results-chromium
 
-      - name: Send report
-        if: always()
-        uses: joonvena/robotframework-reporter-action@v2.4
-        with:
-          report_path: results-chromium
-          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-          show_passed_tests: false
+      # - name: Send report
+      #   if: always()
+      #   uses: joonvena/robotframework-reporter-action@v2.4
+      #   with:
+      #     report_path: results-chromium
+      #     gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+      #     show_passed_tests: false
 
                     

@@ -2,7 +2,7 @@
 Resource    ../resource/utils/base.resource
 
 *** Test Cases ***
-CT 1 - Faze um checkout
+CT 1 - Fazer um checkout
     New Browser    browser=chromium     headless=false
     New Page       url=${URL_BASE}
 

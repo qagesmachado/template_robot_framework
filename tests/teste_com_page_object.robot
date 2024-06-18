@@ -25,7 +25,7 @@ CT 1 - Fazer um checkout com Page Object
     Validar checkout com sucesso
 
 CT 2 - Fazer um checkout com Page Object 2
-    [Tags]    CT2
+    [Tags]    CT2    CT
     
     Acessar detalhes de produto
 
