@@ -35,6 +35,6 @@ jobs:
             sudo npx playwright install-deps
             rfbrowser init
 
-      - name: Running teses
+      - name: Running testes
         run: |
-          robot -d ./results -v HEADLESS:true -v BROWSER:chromium /tests/teste_com_page_object.robot
+          robot -d ./results -v HEADLESS:true -v BROWSER:chromium tests/teste_com_page_object.robot
