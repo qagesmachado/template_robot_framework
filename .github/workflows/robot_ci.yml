@@ -15,6 +15,11 @@ jobs:
     # máquina que será gerada
     runs-on: ubuntu-20.04
     permissions: write-all
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox]
+        tags: [CT1, CT2]
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -39,13 +44,13 @@ jobs:
 
       - name: Running testes
         run: |
-          robot -d ./results -v HEADLESS:true -v BROWSER:chromium tests/teste_com_page_object.robot
+          robot -d ./results -v HEADLESS:true -v BROWSER:${{matrix.browser}} -i ${{matrix.tags}} tests/teste_com_page_object.robot
       
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: results-chromium
+          name: results-${{matrix.browser}}
           path: ./results
           if-no-files-found: ignore
           retention-days: 2
@@ -54,13 +59,13 @@ jobs:
         if: always()
         uses: actions/download-artifact@v1
         with:
-          name: results-chromium
+          name: results-${{matrix.browser}}
 
       - name: Send report
         if: always()
         uses: joonvena/robotframework-reporter-action@v2.4
         with:
-          report_path: results-chromium
+          report_path: results-${{matrix.browser}}
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
 
   on-dispatch-test-page-object-web-testing:
@@ -115,5 +120,6 @@ jobs:
         with:
           report_path: results-chromium
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+          show_passed_tests: true
 
                     
