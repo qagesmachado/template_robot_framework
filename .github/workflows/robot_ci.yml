@@ -8,6 +8,16 @@ on:
     branches:
     - master
   workflow_dispatch:
+    inputs:
+      tags:
+        description: Tags dos testes
+        type: choice
+        options:
+        - CT
+        - CT1
+        - CT2
+        default: 'CT'
+        required: true
 # Conjunto de steps
 jobs:
 
@@ -67,12 +77,17 @@ jobs:
         with:
           report_path: results-${{matrix.browser}}
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+          show_passed_tests: true
 
   on-dispatch-test-page-object-web-testing:
     if: ${{ github.event_name == 'workflow_dispatch' }}
     # máquina que será gerada
     runs-on: ubuntu-20.04
     permissions: write-all
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox]
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -97,7 +112,7 @@ jobs:
 
       - name: Running testes
         run: |
-          robot -d ./results -v HEADLESS:true -v BROWSER:chromium tests/teste_com_page_object.robot
+          robot -d ./results -v HEADLESS:true -v BROWSER:${{matrix.browser}} -i ${{inputs.tags}} tests/teste_com_page_object.robot
       
       - name: Upload test results
         if: always()
