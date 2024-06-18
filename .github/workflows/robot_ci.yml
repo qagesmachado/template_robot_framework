@@ -8,8 +8,10 @@ on:
     branches:
     - master
   workflow_dispatch:
+# Conjunto de steps
 jobs:
   Explore-GitHub-Actions:
+  # máquina que será gerada
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
