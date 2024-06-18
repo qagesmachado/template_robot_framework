@@ -64,7 +64,7 @@ jobs:
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
 
   on-dispatch-test-page-object-web-testing:
-    if: ${{ github.event_name == "workflow_dispatch" }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     # máquina que será gerada
     runs-on: ubuntu-20.04
     permissions: write-all
