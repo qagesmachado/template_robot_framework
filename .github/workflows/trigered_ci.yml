@@ -1,5 +1,5 @@
 # Nome do Workflow
-name: GitHub Actions - CI Robot Framework
+name: Trigered workflow
 
 # Nome para a execução
 run-name: Running - Web testing - ${{ github.event_name }}
