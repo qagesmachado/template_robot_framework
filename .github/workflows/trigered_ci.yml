@@ -9,10 +9,10 @@ on:
     types: [completed]
     branches: [master]
 # Conjunto de steps
-jobs:
 
+jobs:
   on-dispatch-test-page-object-web-testing:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event_name == 'workflow_run' }}
     # máquina que será gerada
     runs-on: ubuntu-20.04
     permissions: write-all
