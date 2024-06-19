@@ -3,7 +3,7 @@ Resource    ../resource/utils/base.resource
 
 *** Test Cases ***
 CT 1 - Fazer um checkout
-    New Browser    browser=chromium     headless=false
+    New Browser    browser=${BROWSER}    headless=${HEADLESS}
     New Page       url=${URL_BASE}
 
     Type Text    id=user-name    ${STANDARD_USER}
