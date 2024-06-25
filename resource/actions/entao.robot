@@ -8,7 +8,3 @@ faço um checkout com sucesso
     Adicionar informações do usuário
     Finalizar checkout
     Validar checkout com sucesso
-
-
-
-    
