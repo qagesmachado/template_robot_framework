@@ -1,5 +1,5 @@
 # Utils
-Esta paaste será utilizada para colocarmos arquivos de utilidade que poderão ser utilizados durante toda a aplicação
+Esta pasta será utilizada para colocarmos arquivos de utilidade que poderão ser utilizados durante toda a aplicação
 
 ## Exemplos de arquivos
 

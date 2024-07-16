@@ -1,7 +1,5 @@
 # Template para início de projetos com Robot Framework
 
-[![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
-
 ## Instalação
 - Instalar o python conforme ensinado no curso
 - Instalar o vs code
