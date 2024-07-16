@@ -1,0 +1,17 @@
+name: Cron Job
+
+on:
+  schedule:
+    # Rodar todos os dias às 3:00 UTC (0:00 horário de Brasília)
+    - cron: '20 23 * * *'
+
+jobs:
+  run-cron-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run a script
+      run: echo "Running the scheduled task"
