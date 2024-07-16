@@ -3,10 +3,12 @@ name: GitHub Actions - CI Robot Framework
 
 # Nome para a execução
 run-name: Running - Web testing - ${{ github.event_name }}
-on: 
+on:
+  schedule:
+    - cron: '* * * * *' 
   push:
     branches:
-    - master
+    - develop
   workflow_dispatch:
     inputs:
       tags:
@@ -31,7 +33,7 @@ on:
 jobs:
 
   on-push-test-page-object-web-testing:
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name != 'push' }}
     # máquina que será gerada
     runs-on: ubuntu-20.04
     permissions: write-all
