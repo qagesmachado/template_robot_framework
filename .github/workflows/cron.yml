@@ -3,7 +3,7 @@ name: Cron Job
 on:
   schedule:
     # Rodar todos os dias às 3:00 UTC (0:00 horário de Brasília)
-    - cron: '55 23 * * *'
+    - cron: '00 12 * * *'
 
 jobs:
   run-cron-job:
