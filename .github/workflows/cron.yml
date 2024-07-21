@@ -1,9 +1,9 @@
-name: Cron Job
+name: Cron Job Template
 
 on:
   schedule:
-    # Rodar todos os dias às 3:00 UTC (0:00 horário de Brasília)
-    - cron: '55 23 * * *'
+    # Rodar todos os dias às 15:00 UTC (12:00 horário de Brasília)
+    - cron: '00 15 * * *'
 
 jobs:
   run-cron-job:

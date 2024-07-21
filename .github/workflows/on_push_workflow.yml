@@ -1,18 +1,14 @@
 # Nome do Workflow
-name: Trigered workflow
+name: GitHub Actions - Push Template
 
 # Nome para a execução
 run-name: Running - Web testing - ${{ github.event_name }}
-on: 
-  workflow_run:
-    workflows: [Workflow Template para Triggar outro Workflow]
-    types: [completed]
-    branches: [master]
-# Conjunto de steps
-
+on:
+  push:
+    branches:
+    - develop
 jobs:
-  on-dispatch-test-page-object-web-testing:
-    if: ${{ github.event_name == 'workflow_run' }}
+  on-push-test-page-object-web-testing:
     # máquina que será gerada
     runs-on: ubuntu-20.04
     permissions: write-all
@@ -38,15 +34,17 @@ jobs:
             sudo npx playwright install-deps
             rfbrowser init
 
+      # Execução dos testes    
       - name: Running testes
         run: |
-          robot -d ./results -v HEADLESS:true -v BROWSER:chromium tests/teste_sem_page_object.robot
+          robot -d ./results -v HEADLESS:true -v BROWSER:chromium tests/teste_com_page_object.robot
       
+      # Geração de relatório
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: results-chromium
+          name: results-${{matrix.browser}}
           path: ./results
           if-no-files-found: ignore
           retention-days: 2
@@ -55,14 +53,4 @@ jobs:
         if: always()
         uses: actions/download-artifact@v1
         with:
-          name: results-chromium
-
-      # - name: Send report
-      #   if: always()
-      #   uses: joonvena/robotframework-reporter-action@v2.4
-      #   with:
-      #     report_path: results-chromium
-      #     gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-      #     show_passed_tests: false
-
-                    
+          name: results-${{matrix.browser}}

@@ -1,4 +1,4 @@
-name: Teste
+name: Workflow Template para Triggar outro Workflow
 run-name: Rodando teste
 on: [push]
 jobs:

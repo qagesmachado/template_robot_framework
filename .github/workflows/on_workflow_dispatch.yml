@@ -1,18 +1,32 @@
 # Nome do Workflow
-name: Trigered workflow
+name: GitHub Actions - Workflow Dispatch Template
 
 # Nome para a execução
 run-name: Running - Web testing - ${{ github.event_name }}
-on: 
-  workflow_run:
-    workflows: [Workflow Template para Triggar outro Workflow]
-    types: [completed]
-    branches: [master]
-# Conjunto de steps
-
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: Selecione a tag
+        type: choice
+        options:
+        - CT
+        - CT1
+        - CT2
+        default: 'CT'
+        required: true
+      browser:
+        description: Selecione o Browser
+        type: choice
+        options:
+        - chromium
+        - firefox
+        - webkit
+        default: 'chromium'
+        required: true
 jobs:
   on-dispatch-test-page-object-web-testing:
-    if: ${{ github.event_name == 'workflow_run' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     # máquina que será gerada
     runs-on: ubuntu-20.04
     permissions: write-all
@@ -40,7 +54,7 @@ jobs:
 
       - name: Running testes
         run: |
-          robot -d ./results -v HEADLESS:true -v BROWSER:chromium tests/teste_sem_page_object.robot
+          robot -d ./results -v HEADLESS:true -v BROWSER:${{inputs.browser}} -i ${{inputs.tags}} tests/teste_com_page_object.robot
       
       - name: Upload test results
         if: always()
@@ -55,14 +69,4 @@ jobs:
         if: always()
         uses: actions/download-artifact@v1
         with:
-          name: results-chromium
-
-      # - name: Send report
-      #   if: always()
-      #   uses: joonvena/robotframework-reporter-action@v2.4
-      #   with:
-      #     report_path: results-chromium
-      #     gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-      #     show_passed_tests: false
-
-                    
+          name: results-chromium                
