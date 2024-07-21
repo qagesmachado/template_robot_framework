@@ -44,7 +44,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: results-${{matrix.browser}}
+          name: results
           path: ./results
           if-no-files-found: ignore
           retention-days: 2
@@ -53,4 +53,4 @@ jobs:
         if: always()
         uses: actions/download-artifact@v1
         with:
-          name: results-${{matrix.browser}}
+          name: results
