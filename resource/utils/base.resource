@@ -25,5 +25,3 @@ Resource    ../locators/product_details_locator.resource
 Resource    ../locators/checkout_locator.resource
 Resource    ../locators/home_locator.resource
 
-*** Variables ***
-${URL_BASE}    https://www.saucedemo.com/

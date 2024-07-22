@@ -3,4 +3,5 @@
 ${STANDARD_USER}    standard_user
 ${STANDARD_PASSWORD}    secret_sauce
 ${BROWSER}     chromium        
-${HEADLESS}    true 
+${HEADLESS}    ${False}
+${URL_BASE}    https://www.saucedemo.com/
