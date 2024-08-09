@@ -10,9 +10,9 @@ Test Teardown         Fazer Logout
 CT 1 - Fazer um checkout com Page Object
     [Tags]    CT1    CT
     
-    Acessar detalhes de produto
+    Acessar detalhes de produto    Sauce Labs Backpack
 
-    Adicionar produto ao carrinho
+    Adicionar produto ao carrinho    
 
     Visualizar carrinho
 

@@ -11,5 +11,5 @@ Test Teardown         Fazer Logout
 CT 1 - Fazer um checkout com Page Object + Gherkin
     [Tags]    CT1    CT
     Dado que estou autenticado
-    Quando adiciono o produto no carrinho
+    Quando adiciono o produto no carrinho    Sauce Labs Backpack
     Então faço um checkout com sucesso

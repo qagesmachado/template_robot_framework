@@ -3,4 +3,5 @@ Resource    ../utils/base.resource
 
 *** Keywords ***
 Acessar detalhes de produto
-    Click    id=item_4_title_link
+    [Arguments]    ${nome_produto}
+    Click    xpath=//div[contains(text(),'${nome_produto}')]

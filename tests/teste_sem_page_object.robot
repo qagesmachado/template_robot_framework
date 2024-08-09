@@ -3,15 +3,18 @@ Resource    ../resource/utils/base.resource
 
 *** Test Cases ***
 CT 1 - Fazer um checkout
+    
+    # Abrir navegador
     New Browser    browser=${BROWSER}    headless=${HEADLESS}
     New Page       url=${URL_BASE}
 
+    # Fazer login
     Type Text    id=user-name    ${STANDARD_USER}
     Type Secret    id=password    secret=$STANDARD_PASSWORD
     Click    id=login-button
 
     Wait For Condition     Text    span[class="title"]     contains    Products
-
+    
     Click    id=item_4_title_link
     Click    id=add-to-cart  
     Click    data-test=shopping-cart-link
