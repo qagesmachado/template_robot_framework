@@ -10,7 +10,7 @@ Test Teardown         Fazer Logout
 CT 1 - Fazer um checkout com Page Object
     [Tags]    CT1    CT
     
-    Acessar detalhes de produto    Sauce Labs Backpack
+    Acessar detalhes de produto    Sauce Labs Bike Light
 
     Adicionar produto ao carrinho    
 
@@ -27,7 +27,7 @@ CT 1 - Fazer um checkout com Page Object
 CT 2 - Fazer um checkout com Page Object 2
     [Tags]    CT2    CT
     
-    Acessar detalhes de produto
+    Acessar detalhes de produto    Sauce Labs Backpack
 
     Adicionar produto ao carrinho
 

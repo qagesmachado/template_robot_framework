@@ -15,6 +15,7 @@ CT 1 - Fazer um checkout
 
     Wait For Condition     Text    span[class="title"]     contains    Products
     
+    # Checkout
     Click    id=item_4_title_link
     Click    id=add-to-cart  
     Click    data-test=shopping-cart-link
