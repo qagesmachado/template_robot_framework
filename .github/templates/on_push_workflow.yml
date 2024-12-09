@@ -1,0 +1,18 @@
+# Nome do Workflow
+name: Escolha um nome do workflow
+
+# Nome para a execução
+run-name: Escolha o nome que irá aparecer sempre que o workflow for executado
+on:
+  # Espaço para você configurar os trigger
+  # Cada um terá sua peculiaridade
+
+jobs:
+  deve-existir-pelo-menos-um-job:
+    # Crie e configure a máquina onde o job será executado
+    runs-on: ubuntu-20.04
+    permissions: write-all
+    steps:
+      # Crie os steps qude deverão ser executados
+      # Instalação de dependência até
+      # Execução da automação
