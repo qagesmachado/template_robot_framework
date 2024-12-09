@@ -53,7 +53,7 @@ jobs:
 
       - name: Download test results
         if: always()
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: results-chromium
 
@@ -61,7 +61,7 @@ jobs:
         if: always()
         uses: joonvena/robotframework-reporter-action@v2.4
         with:
-          report_path: results-chromium
+          report_path: results/results-chromium
           gh_access_token: ${{ secrets.GITHUB_TOKEN }}
           show_passed_tests: false
 
