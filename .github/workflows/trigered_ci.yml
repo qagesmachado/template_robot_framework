@@ -50,19 +50,3 @@ jobs:
           path: ./results
           if-no-files-found: ignore
           retention-days: 2
-
-      - name: Download test results
-        if: always()
-        uses: actions/download-artifact@v4
-        with:
-          name: results-chromium
-
-      - name: Send report
-        if: always()
-        uses: joonvena/robotframework-reporter-action@v2.4
-        with:
-          report_path: results/results-chromium
-          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-          show_passed_tests: false
-
-                    
