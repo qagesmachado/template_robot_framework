@@ -6,7 +6,7 @@ run-name: Running - Web testing - ${{ github.event_name }}
 on:
   push:
     branches:
-    - develop
+    - master
 jobs:
   on-push-test-page-object-web-testing:
     if: ${{ github.event_name == 'push' }}
