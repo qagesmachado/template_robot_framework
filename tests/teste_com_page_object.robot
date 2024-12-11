@@ -40,6 +40,3 @@ CT 2 - Fazer um checkout com Page Object 2
     Finalizar checkout
     
     Validar checkout com sucesso
-    # Dado que adiciono o produto ao carrinho
-    # Quando faço a compra do produto
-    # Entao faço então recebo mensagem de sucesso

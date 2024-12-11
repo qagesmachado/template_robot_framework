@@ -42,15 +42,9 @@ jobs:
       # Geração de relatório
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: results
           path: ./results
           if-no-files-found: ignore
           retention-days: 2
-
-      - name: Download test results
-        if: always()
-        uses: actions/download-artifact@v1
-        with:
-          name: results

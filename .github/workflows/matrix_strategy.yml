@@ -46,23 +46,9 @@ jobs:
       
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: results-${{matrix.browser}}
           path: ./results
           if-no-files-found: ignore
           retention-days: 2
-
-      - name: Download test results
-        if: always()
-        uses: actions/download-artifact@v1
-        with:
-          name: results-${{matrix.browser}}
-
-      # - name: Send report
-      #   if: always()
-      #   uses: joonvena/robotframework-reporter-action@v2.4
-      #   with:
-      #     report_path: results-${{matrix.browser}}
-      #     gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-      #     show_passed_tests: false
